@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import networkx as nx
 import random
 
-# Importas las funciones de los otros archivos
+# ...
 from procesamiento import cargar_y_limpiar_datos
 from recorridos import bfs_subgrafo
 
