@@ -7,7 +7,7 @@ def dfs_subgrafo(grafo, nodo_inicial, limite_nodos=150):
     aristas_dfs = []
 
     while pila and len(visitados) < limite_nodos:
-        nodo = pila.pop() # LIFO: Saca el último agregado
+        nodo = pila.pop() # LIFO: Saca el ultimo agregado
 
         for vecino in grafo.neighbors(nodo):
             if vecino not in visitados and len(visitados) < limite_nodos:
