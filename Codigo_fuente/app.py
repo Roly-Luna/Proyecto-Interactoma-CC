@@ -32,7 +32,6 @@ st.write(f"**Datos procesados:** {G.number_of_nodes()} Proteinas (Nodos) | {G.nu
 
 # --- PANEL LATERAL (SIDEBAR) ---
 # Imagen referencial y menu de opciones para navegar por los algoritmos
-st.sidebar.image("logo.png", use_container_width=True)
 st.sidebar.title("Modulos Algoritmicos")
 opcion = st.sidebar.radio("Seleccione el analisis:", 
                           ["1. Exploracion Inicial (Grafo General)", 
