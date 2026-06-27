@@ -2,6 +2,7 @@ import streamlit as st
 import matplotlib.pyplot as plt
 import networkx as nx
 import random
+import os
 
 # Importamos nuestros modulos personalizados de las otras clases
 from procesamiento import cargar_y_limpiar_datos, obtener_top_nodos
@@ -11,12 +12,21 @@ from kruskal import algoritmo_kruskal
 # Configuracion inicial de la pagina web
 st.set_page_config(page_title="Interactoma Humano PPI", layout="wide")
 
-# --- CARGA EN MEMORIA (CACHE) ---
+'''# --- CARGA EN MEMORIA (CACHE) ---
 # Usamos cache para que el CSV de 342k lineas se lea solo una vez y no ralentice la app
 @st.cache_resource
 def iniciar_sistema():
     # Retorna el grafo procesado desde nuestro modulo de pandas
-    return cargar_y_limpiar_datos("../Dataset/PP-Pathways_ppi.csv")
+    return cargar_y_limpiar_datos("../Dataset/PP-Pathways_ppi.csv")'''
+
+# --- CARGA EN MEMORIA (CACHE) ---
+@st.cache_resource
+def iniciar_sistema():
+    # Calculamos la ruta absoluta sin importar donde se ejecute
+    ruta_actual = os.path.dirname(os.path.abspath(__file__))
+    ruta_csv = os.path.join(ruta_actual, "..", "Dataset", "PP-Pathways_ppi.csv")
+    
+    return cargar_y_limpiar_datos(ruta_csv)
 
 # Muestra un mensaje mientras carga los datos masivos al abrir la app
 with st.spinner('Construyendo Lista de Adyacencia en Memoria RAM...'):
