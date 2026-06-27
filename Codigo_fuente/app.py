@@ -12,12 +12,6 @@ from kruskal import algoritmo_kruskal
 # Configuracion inicial de la pagina web
 st.set_page_config(page_title="Interactoma Humano PPI", layout="wide")
 
-'''# --- CARGA EN MEMORIA (CACHE) ---
-# Usamos cache para que el CSV de 342k lineas se lea solo una vez y no ralentice la app
-@st.cache_resource
-def iniciar_sistema():
-    # Retorna el grafo procesado desde nuestro modulo de pandas
-    return cargar_y_limpiar_datos("../Dataset/PP-Pathways_ppi.csv")'''
 
 # --- CARGA EN MEMORIA (CACHE) ---
 @st.cache_resource
