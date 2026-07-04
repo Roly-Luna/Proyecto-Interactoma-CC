@@ -33,7 +33,7 @@ def obtener_info_gen(gene_id):
     except:
         return None, None
 
-# 2. Funcion para generar grafo interactivo con PyVis (MODO CLARO Y HOVER MEJORADO)
+# 2. Funcion para generar grafo interactivo con PyVis
 def generar_grafo_interactivo(grafo, resaltar_nodo=None):
     # Inicializa red interactiva con fondo blanco y texto negro
     net = Network(height="600px", width="100%", bgcolor="#ffffff", font_color="black", notebook=False)
@@ -86,7 +86,7 @@ st.title("Analisis Computacional del Interactoma Humano")
 st.write(f"**Datos procesados:** {G.number_of_nodes()} Proteinas (Nodos) | {G.number_of_edges()} Interacciones (Aristas)")
 
 # --- PANEL LATERAL (SIDEBAR) ---
-st.sidebar.image("https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Protein-protein_interaction_network.png/300px-Protein-protein_interaction_network.png", use_container_width=True)
+st.sidebar.image("https://upload.wikimedia.org/wikipedia/commons/f/fc/UPC_logo_transparente.png", use_container_width=True)
 st.sidebar.header("Opciones de Analisis")
 
 # Nombres de menu actualizados
