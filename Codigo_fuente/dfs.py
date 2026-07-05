@@ -3,7 +3,7 @@ import networkx as nx
 # Recorrido DFS (Depth First Search) usando LIFO (Pila/Stack)
 def dfs_subgrafo(grafo, nodo_inicial, limite_nodos=150):
     visitados = set([nodo_inicial])
-    pila = [nodo_inicial] # DFS usa pila, BFS usaba cola (deque)
+    pila = [nodo_inicial]
     aristas_dfs = []
 
     while pila and len(visitados) < limite_nodos:

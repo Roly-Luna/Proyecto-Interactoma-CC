@@ -28,19 +28,19 @@ class UFDS:
                 
 # Aplica Kruskal sobre un grafo para retornar su MST (Arbol de Expansion Minima).
 def algoritmo_kruskal(grafo):
-    # 1. Extraer y ordenar aristas por peso
+    # Extraer y ordenar aristas por peso
     aristas = []
     for u, v, datos in grafo.edges(data=True):
         peso = datos.get('weight', 1)
         aristas.append((peso, u, v))
     aristas.sort() # Orden de menor a mayor peso
 
-    # 2. Inicializar UFDS
+    # Inicializar UFDS
     ufds = UFDS(list(grafo.nodes()))
     mst = nx.Graph()
     mst.add_nodes_from(grafo.nodes())
 
-    # 3. Construir el MST
+    # Construir el MST
     peso_total = 0
     for peso, u, v in aristas:
         if ufds.find(u) != ufds.find(v):
