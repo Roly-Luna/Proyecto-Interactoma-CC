@@ -17,7 +17,6 @@ from kruskal import algoritmo_kruskal
 st.set_page_config(page_title="Interactoma Humano PPI", layout="wide")
 
 # --- FUNCIONES NUEVAS PARA EL HITO 3 ---
-
 # 1. Funcion para consumir API publica de genetica (MyGene)
 def obtener_info_gen(gene_id):
     # Consulta a internet para obtener el nombre real de la proteina
@@ -30,7 +29,8 @@ def obtener_info_gen(gene_id):
             simbolo = datos.get("symbol", "Simbolo desconocido")
             return nombre, simbolo
         return None, None
-    except:
+    except requests.exceptions.RequestException:
+        # Atrapa especificamente errores de conexion a internet o caidas de la API
         return None, None
 
 # 2. Funcion para generar grafo interactivo con PyVis
@@ -54,6 +54,13 @@ def generar_grafo_interactivo(grafo, resaltar_nodo=None):
             node["size"] = 25
         else:
             node["color"] = "#1f78b4"
+
+    # LIMPIEZA DE ARISTAS: Evita que PyVis dibuje los pesos matematicos y dificulte la visualizacion del grafico
+    for edge in net.edges:
+        edge['label'] = ""  # Oculta el texto del numero en la linea
+        edge['value'] = 1   # Fija un grosor estandar para todas las lineas de conexion
+        if 'title' in edge:
+            del edge['title'] # Evita tooltips molestos en las lineas
             
     # Fuerza de repulsion para evitar que los nodos se amontonen
     net.repulsion(node_distance=150, spring_length=100)
@@ -99,7 +106,8 @@ if opcion == "Modulo 1: Busqueda de Via (DFS)":
     
     col1, col2 = st.columns([1, 3])
     with col1:
-        nodo_input = st.number_input("Ingrese ID de Proteina Origen:", min_value=1, value=6331, step=1)
+        # 6334 Prueba del informe Word
+        nodo_input = st.number_input("Ingrese ID de Proteina Origen:", min_value=1, value=6334, step=1)
         limite = st.slider("Limite de expansion (Nodos):", 10, 500, 150)
         btn_dfs = st.button("Ejecutar Busqueda de Via")
         
