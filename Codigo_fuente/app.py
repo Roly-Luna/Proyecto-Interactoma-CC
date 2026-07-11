@@ -60,7 +60,7 @@ def generar_grafo_interactivo(grafo, resaltar_nodo=None):
     # esto evita que los nodos queden todos amontonados en el centro
     net.repulsion(node_distance=150, spring_length=100)
 
-    # pyvis necesita guardar el grafo como html para poder mostrarlo, usamos un archivo temporal
+    # pyvis necesita guardar el grafo similar a html para poder mostrarlo, usamos un archivo temporal
     with tempfile.NamedTemporaryFile(delete=False, suffix='.html') as tmp:
         file_path = tmp.name
 
